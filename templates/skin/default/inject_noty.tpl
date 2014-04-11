@@ -57,6 +57,11 @@
                     callback.afterClose = function() {
                         $.notifier.closeMessage(text);
                     };
+                    if ($("#beep").length) {
+                        var beep = $("#beep")[0];
+                        beep.volume = 0.4;
+                        beep.play();
+                    }
                     break;
             }
             $.notifier.core();

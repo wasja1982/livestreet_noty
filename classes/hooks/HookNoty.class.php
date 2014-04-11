@@ -13,10 +13,15 @@ class PluginNoty_HookNoty extends Hook {
 
     public function RegisterHook() {
         $this->AddHook('template_html_head_end', 'html_head_end');
+        $this->AddHook('template_html_head_end', 'body_begin');
     }
 
     public function html_head_end() {
         return $this->Viewer_Fetch(Plugin::GetTemplatePath(__CLASS__).'inject_noty.tpl');
+    }
+
+    public function body_begin() {
+        return $this->Viewer_Fetch(Plugin::GetTemplatePath(__CLASS__).'inject_mp3.tpl');
     }
 }
 ?>
