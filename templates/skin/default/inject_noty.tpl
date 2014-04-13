@@ -65,7 +65,16 @@
                     break;
             }
             $.notifier.core();
-            $("#" + $.notifier.options.core).noty({layout: 'topRight', timeout: timeout, theme: 'blankTheme', animation: animation, template: template, text: text, callback: callback});
+            var box = $("#" + $.notifier.options.core).noty({layout: 'topRight', timeout: timeout, theme: 'blankTheme', animation: animation, template: template, text: text, callback: callback});
+            if (box && type != $.notifier.options.notice_class && type != $.notifier.options.error_class) {
+                var now = new Date();
+                var h = now.getHours(); h = (h < 10 ? '0' : '') + h;
+                var m = now.getMinutes(); m = (m < 10 ? '0' : '') + m;
+                var s = now.getSeconds(); s = (s < 10 ? '0' : '') + s;
+                var time = '<b>[' + h + ':' + m + ':' + s + ']</b> ';
+                var text_box = box.$bar.find('.noty_text > p').first();
+                text_box.html(time + text_box.html());
+            }
         };
         $(window).bind('storage', function (e) {
             var evt = e.originalEvent;
