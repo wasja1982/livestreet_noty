@@ -57,7 +57,8 @@
                     callback.afterClose = function() {
                         $.notifier.closeMessage(text);
                     };
-                    if ($("#beep").length) {
+                    var beep_enable = ($.cookie('noty_beep_disable') ? false : true);
+                    if (beep_enable && $("#beep").length) {
                         var beep = $("#beep")[0];
                         beep.volume = 0.4;
                         beep.play();
