@@ -5,7 +5,7 @@
 
 {literal}<script type="text/javascript">
     function toggleBeepDisable(element) {
-        $.cookie('noty_beep_disable', (element.checked ? 1 : null), { 'path': '/' });
+        $.cookie('noty_beep_disable', (element.checked ? 1 : null), { 'expires': 365, 'path': '/' });
     }
 
     jQuery(document).ready(function($){
